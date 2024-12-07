@@ -1,8 +1,8 @@
 # day 3
 import re
 
-total = 0
-total2 = 0
+count = 0
+count2 = 0
 process = True
 
 file = open('day3_input.txt', 'r')
@@ -11,7 +11,7 @@ file.close()
 
 for expr in re.findall(r"mul\(\d+,\d+\)", data):
     L, R = re.findall(r"\d+", expr)
-    total += int(L) * int(R)
+    count += int(L) * int(R)
 
 for expr in re.findall(r"(don\'t\(\)|do\(\)|mul\(\d+,\d+\))", data):
     if expr == "don't()":
@@ -20,7 +20,7 @@ for expr in re.findall(r"(don\'t\(\)|do\(\)|mul\(\d+,\d+\))", data):
         process = True
     elif process:
         L, R = re.findall(r"\d+", expr)
-        total2 += int(L) * int(R)
+        count2 += int(L) * int(R)
 
-print(total)
-print(total2)
+print(count)
+print(count2)

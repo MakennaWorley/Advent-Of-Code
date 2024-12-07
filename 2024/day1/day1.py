@@ -3,8 +3,8 @@ from collections import Counter
 
 list_1 = []
 list_2 = []
-difference = 0
-similarity = 0
+count = 0
+count2 = 0
 
 with open('day1_input.txt', 'r') as file:
     for line in file:
@@ -22,11 +22,11 @@ list_2_dict = dict(Counter(list_2))
 
 if len(sorted_list_1) == len(sorted_list_2):
     for i in range(len(sorted_list_1)):
-        difference += abs(sorted_list_1[i] - sorted_list_2[i])
+        count += abs(sorted_list_1[i] - sorted_list_2[i])
 
 for i in range(len(list_1)):
     value = list_1[i]
-    similarity += (list_2_dict.get(value, 0) * value)
+    count2 += (list_2_dict.get(value, 0) * value)
 
-print(difference)
-print(similarity)
+print(count)
+print(count2)

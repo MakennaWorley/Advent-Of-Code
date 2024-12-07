@@ -1,8 +1,8 @@
 # day 2
-safe = 0
-safe2 = 0
+count = 0
+count2 = 0
 
-def is_report_safe(head, tail, sign):
+def is_report_count(head, tail, sign):
     if not tail:
         return True
 
@@ -19,24 +19,24 @@ def is_report_safe(head, tail, sign):
     match sign:
         case 'positive':
             if (head + 3) >= new_head >= (head + 1):
-                return is_report_safe(new_head, tail, sign)
+                return is_report_count(new_head, tail, sign)
             else:
                 return False
         case 'negative':
             if (head - 3) <= new_head <= (head - 1):
-                return is_report_safe(new_head, tail, sign)
+                return is_report_count(new_head, tail, sign)
             else:
                 return False
 
 
-def is_removed_report_safe(line):
+def is_removed_report_count(line):
     for i in range(len(line)):
         modified_line = line[:i] + line[i + 1:]
 
         head = modified_line[0]
         tail = modified_line[1:]
 
-        if is_report_safe(head, tail, None):
+        if is_report_count(head, tail, None):
             return True
     return False
 
@@ -50,8 +50,8 @@ with open('day2_input.txt', 'r') as file:
         tail = parts
         sign = None
 
-        if is_report_safe(head, tail, sign):
-            safe += 1
+        if is_report_count(head, tail, sign):
+            count += 1
 
     file.close()
 
@@ -66,9 +66,9 @@ with open('day2_input.txt', 'r') as file:
         tail = parts
         sign = None
 
-        if is_report_safe(head, tail, sign) or is_removed_report_safe(parts_2):
-            safe2 += 1
+        if is_report_count(head, tail, sign) or is_removed_report_count(parts_2):
+            count2 += 1
     file.close()
 
-print(safe)
-print(safe2)
+print(count)
+print(count2)
