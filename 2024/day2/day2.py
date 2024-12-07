@@ -1,5 +1,6 @@
-# day 2: puzzle 1
+# day 2
 safe = 0
+safe2 = 0
 
 def is_report_safe(head, tail, sign):
     if not tail:
@@ -28,7 +29,19 @@ def is_report_safe(head, tail, sign):
                 return False
 
 
-with open('2024/day2/day2_input.txt', 'r') as file:
+def is_removed_report_safe(line):
+    for i in range(len(line)):
+        modified_line = line[:i] + line[i + 1:]
+
+        head = modified_line[0]
+        tail = modified_line[1:]
+
+        if is_report_safe(head, tail, None):
+            return True
+    return False
+
+
+with open('day2_input.txt', 'r') as file:
     for line in file:
         parts = line.split()
         parts = [int(x) for x in parts]
@@ -42,4 +55,20 @@ with open('2024/day2/day2_input.txt', 'r') as file:
 
     file.close()
 
+with open('day2_input.txt', 'r') as file:
+    for line in file:
+        parts = line.strip().split()
+        parts = [int(x) for x in parts]
+
+        parts_2 = parts.copy()
+
+        head = int(parts.pop(0))
+        tail = parts
+        sign = None
+
+        if is_report_safe(head, tail, sign) or is_removed_report_safe(parts_2):
+            safe2 += 1
+    file.close()
+
 print(safe)
+print(safe2)
