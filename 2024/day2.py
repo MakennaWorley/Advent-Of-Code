@@ -41,7 +41,7 @@ def is_removed_report_count(line):
     return False
 
 
-with open('day2_input.txt', 'r') as file:
+with open('inputs/day2_input.txt', 'r') as file:
     for line in file:
         parts = line.split()
         parts = [int(x) for x in parts]
@@ -55,7 +55,7 @@ with open('day2_input.txt', 'r') as file:
 
     file.close()
 
-with open('day2_input.txt', 'r') as file:
+with open('inputs/day2_input.txt', 'r') as file:
     for line in file:
         parts = line.strip().split()
         parts = [int(x) for x in parts]

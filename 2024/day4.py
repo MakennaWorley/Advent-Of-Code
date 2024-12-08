@@ -16,7 +16,7 @@ count = 0
 count2 = 0
 text = []
 
-with open('day4_input.txt', 'r') as file:
+with open('inputs/day4_input.txt', 'r') as file:
     for line in file:
         text.append(line.strip())
     file.close()

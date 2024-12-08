@@ -5,7 +5,7 @@ count = 0
 count2 = 0
 process = True
 
-file = open('day3_input.txt', 'r')
+file = open('inputs/day3_input.txt', 'r')
 data = file.read()
 file.close()
 

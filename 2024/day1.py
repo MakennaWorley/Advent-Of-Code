@@ -6,7 +6,7 @@ list_2 = []
 count = 0
 count2 = 0
 
-with open('day1_input.txt', 'r') as file:
+with open('inputs/day1_input.txt', 'r') as file:
     for line in file:
         parts = line.split()
         if len(parts) == 2:

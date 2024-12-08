@@ -1,7 +1,7 @@
 # day 6
 count = 0
 count2 = 0
-text = open('day6_input.txt').read().strip()
+text = open('inputs/day6_input.txt').read().strip()
 
 row_change = [-1, 0, 1, 0]
 column_change = [0, 1, 0, -1]

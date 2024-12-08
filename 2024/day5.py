@@ -4,7 +4,7 @@ count2 = 0
 instructions = {}
 reversed_instructions = {}
 
-D = open('day5_input.txt').read().strip()
+D = open('inputs/day5_input.txt').read().strip()
 page_order, updates = D.split('\n\n')
 
 for line in page_order.split('\n'):
