@@ -1,3 +1,4 @@
+# day 10
 from collections import deque
 def ways1(sr,sc):
     queue = deque([(sr,sc)])
@@ -31,8 +32,8 @@ def ways(r,c):
     dict[(r,c)] = ans
     return ans
 
-p1 = 0
-p2 = 0
+count = 0
+count2 = 0
 text = open('inputs/day10_input.txt').read().strip()
 
 graph = text.split('\n')
@@ -44,8 +45,8 @@ dict = {}
 for r in range(row):
     for c in range(column):
         if graph[r][c]==9:
-            p1 += ways1(r,c)
-            p2 += ways(r,c)
+            count += ways1(r,c)
+            count2 += ways(r,c)
 
-print(p1)
-print(p2)
+print(count)
+print(count2)
