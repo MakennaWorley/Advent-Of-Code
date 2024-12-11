@@ -1,4 +1,4 @@
-# day 8
+# day 9
 def solve(decrease):
     list = []
     free = []
