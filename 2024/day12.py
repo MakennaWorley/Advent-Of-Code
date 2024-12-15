@@ -1,3 +1,4 @@
+# day 12
 from collections import deque
 
 DIRECTIONS = [(-1,0),(0,1),(1,0),(0,-1)] # up right down left

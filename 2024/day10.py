@@ -1,6 +1,6 @@
 # day 10
 from collections import deque
-def ways1(sr,sc):
+def single_path(sr,sc):
     queue = deque([(sr,sc)])
     ans = 0
     SEEN = set()
@@ -18,7 +18,7 @@ def ways1(sr,sc):
                 queue.append((rr,cc))
     return ans
 
-def ways(r,c):
+def multiple_paths(r,c):
     if graph[r][c]==0:
         return 1
     if (r,c) in dict:
@@ -28,7 +28,7 @@ def ways(r,c):
         rr = r+dr
         cc = c+dc
         if 0<=rr<row and 0<=cc<column and graph[rr][cc] == graph[r][c]-1:
-            ans += ways(rr,cc)
+            ans += multiple_paths(rr,cc)
     dict[(r,c)] = ans
     return ans
 
@@ -45,8 +45,8 @@ dict = {}
 for r in range(row):
     for c in range(column):
         if graph[r][c]==9:
-            count += ways1(r,c)
-            count2 += ways(r,c)
+            count += single_path(r,c)
+            count2 += multiple_paths(r,c)
 
 print(count)
 print(count2)
