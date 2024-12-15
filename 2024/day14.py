@@ -33,6 +33,7 @@ for t in range(1,10**6):
         q4 = 0
         mx = X//2
         my = Y//2
+
     for i,(px,py,vx,vy) in enumerate(robots):
         px += vx
         py += vy
