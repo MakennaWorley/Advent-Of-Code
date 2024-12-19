@@ -14,6 +14,7 @@ def is_valid(goal, nums, count2):
 
     return False
 
+
 count = 0
 count2 = 0
 text = open('inputs/day7_input.txt').read().strip()

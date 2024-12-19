@@ -2,6 +2,7 @@
 def within_array(x, y):
     return 0 <= x < len(text) and 0 <= y < len(text[0])
 
+
 def count_in_direction(x, y, dx, dy):
     word = "XMAS"
     for i in range(len(word)):
@@ -9,6 +10,7 @@ def count_in_direction(x, y, dx, dy):
         if not within_array(nx, ny) or text[nx][ny] != word[i]:
             return 0
     return 1
+
 
 directions = [(-1, 0), (1, 0), (0, -1), (0, 1),
               (-1, -1), (-1, 1), (1, -1), (1, 1)]

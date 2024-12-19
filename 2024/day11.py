@@ -17,8 +17,10 @@ def solve(x, t):
     dict[(x,t)] = ret
     return ret
 
+
 def solve_all(t):
     return sum(solve(x, t) for x in text)
+
 
 count = 0
 count2 = 0

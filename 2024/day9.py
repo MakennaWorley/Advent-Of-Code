@@ -37,6 +37,7 @@ def solve(decrease):
             ans += i * c
     return ans
 
+
 text = open('inputs/day9_input.txt').read().strip()
 
 count = solve(False)

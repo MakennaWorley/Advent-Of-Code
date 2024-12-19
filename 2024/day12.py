@@ -69,6 +69,5 @@ for r in range(row):
         count += area*perim
         count2 += area*sides
 
-
 print(count)
 print(count2)

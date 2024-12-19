@@ -101,6 +101,7 @@ def solve(graph,part2):
                 ans += 100*r+c
     return ans
 
+
 D = open('inputs/day15_input.txt').read().strip()
 
 graph, instructions = D.split('\n\n')

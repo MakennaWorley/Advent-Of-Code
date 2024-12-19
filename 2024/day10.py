@@ -1,5 +1,6 @@
 # day 10
 from collections import deque
+
 def single_path(sr,sc):
     queue = deque([(sr,sc)])
     ans = 0
@@ -18,6 +19,7 @@ def single_path(sr,sc):
                 queue.append((rr,cc))
     return ans
 
+
 def multiple_paths(r,c):
     if graph[r][c]==0:
         return 1
@@ -31,6 +33,7 @@ def multiple_paths(r,c):
             ans += multiple_paths(rr,cc)
     dict[(r,c)] = ans
     return ans
+
 
 count = 0
 count2 = 0

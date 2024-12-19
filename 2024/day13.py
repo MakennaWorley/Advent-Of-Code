@@ -49,6 +49,7 @@ def min_cost_claw_large(a_x, a_y, b_x, b_y, p_x, p_y):
     cost = int(n_a) * 3 + int(n_b) * 1
     return cost
 
+
 count = 0
 count2 = 0
 text = open('inputs/day13_input.txt').read().strip()
