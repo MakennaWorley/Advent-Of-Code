@@ -70,10 +70,10 @@ def find_quine(Ast):
 
 
 ans = 0
-D = open('inputs/day17_input.txt').read().strip()
-matches = [int(x) for x in re.findall(r"\d+", D)]
+text = open('inputs/day17_input.txt').read().strip()
+matches = [int(x) for x in re.findall(r"\d+", text)]
 
-regs, program = D.split('\n\n')
+regs, program = text.split('\n\n')
 A,B,C = ints(regs)
 program = program.split(':')[1].strip().split(',')
 program = [int(x) for x in program]
