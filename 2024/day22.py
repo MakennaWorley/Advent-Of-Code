@@ -1,14 +1,4 @@
-import sys
-import re
-import pyperclip as pc
-def pr(s):
-    print(s)
-    pc.copy(s)
-sys.setrecursionlimit(10**6)
-DIRS = [(-1,0),(0,1),(1,0),(0,-1)] # up right down left
-
-D = open('inputs/day22_input.txt').read().strip()
-
+# day 22
 def mix(x,y):
     return x^y
 def prune(x):
@@ -34,11 +24,14 @@ def getScores(P, C):
             ANS[pattern] = P[i+4]
     return ANS
 
-p1 = 0
+text = open('inputs/day22_input.txt').read().strip()
+
+count = 0
 SCORE = {}
-for line in D.split('\n'):
+
+for line in text.split('\n'):
     P = prices(int(line))
-    p1 += P[-1]
+    count += P[-1]
     P = [x%10 for x in P]
     C = changes(P)
     S = getScores(P,C)
@@ -47,5 +40,6 @@ for line in D.split('\n'):
             SCORE[k] = v
         else:
             SCORE[k] += v
-print(p1)
+
+print(count)
 print(max(SCORE.values()))
