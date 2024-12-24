@@ -1,6 +1,5 @@
 # day 24
 import re
-from itertools import permutations
 
 def parse_input(inputs):
     initial_values = {}
