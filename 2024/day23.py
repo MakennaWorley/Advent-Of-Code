@@ -12,7 +12,7 @@ for line in text.split('\n'):
 
 xs = sorted(dict.keys())
 
-p1 = 0
+count = 0
 for i,a in enumerate(xs):
     for j in range(i+1, len(xs)):
         for k in range(j+1, len(xs)):
@@ -20,11 +20,12 @@ for i,a in enumerate(xs):
             c = xs[k]
             if a in dict[b] and a in dict[c] and b in dict[c]:
                 if a.startswith('t') or b.startswith('t') or c.startswith('t'):
-                    p1 += 1
+                    count += 1
 
-print(p1)
+print(count)
 
 best = None
+
 for t in range(1000):
     random.shuffle(xs)
     clique = []

@@ -102,9 +102,9 @@ def solve(graph,part2):
     return ans
 
 
-D = open('inputs/day15_input.txt').read().strip()
+text = open('inputs/day15_input.txt').read().strip()
 
-graph, instructions = D.split('\n\n')
+graph, instructions = text.split('\n\n')
 graph = graph.split('\n')
 
 print(solve(graph, False))

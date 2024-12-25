@@ -9,7 +9,7 @@ def ints(s):
 
 count = 0
 count2 = 0
-D = open('inputs/day14_input.txt').read().strip()
+text = open('inputs/day14_input.txt').read().strip()
 
 X = 101
 Y = 103
@@ -20,7 +20,7 @@ q4 = 0
 
 robots = []
 
-for line in D.split('\n'):
+for line in text.split('\n'):
     px,py,vx,vy = ints(line)
     robots.append((px,py,vx,vy))
 

@@ -1,28 +1,36 @@
 # day 22
 def mix(x,y):
     return x^y
+
+
 def prune(x):
     return x%16777216
 
+
 def prices(x):
-    ans = [x]
+    list = [x]
     for _ in range(2000):
         x = prune(mix(x, 64*x))
         x = prune(mix(x, x//32))
         x = prune(mix(x, x*2048))
-        ans.append(x)
-    return ans
+        list.append(x)
+
+    return list
+
 
 def changes(P):
     return [P[i+1]-P[i] for i in range(len(P)-1)]
 
+
 def getScores(P, C):
-    ANS = {}
+    dict = {}
     for i in range(len(C)-3):
         pattern = (C[i], C[i+1], C[i+2], C[i+3])
-        if pattern not in ANS:
-            ANS[pattern] = P[i+4]
-    return ANS
+        if pattern not in dict:
+            dict[pattern] = P[i+4]
+
+    return dict
+
 
 text = open('inputs/day22_input.txt').read().strip()
 
@@ -35,9 +43,11 @@ for line in text.split('\n'):
     P = [x%10 for x in P]
     C = changes(P)
     S = getScores(P,C)
+
     for k,v in S.items():
         if k not in SCORE:
             SCORE[k] = v
+
         else:
             SCORE[k] += v
 

@@ -4,8 +4,8 @@ count2 = 0
 instructions = {}
 reversed_instructions = {}
 
-D = open('inputs/day5_input.txt').read().strip()
-page_order, updates = D.split('\n\n')
+text = open('inputs/day5_input.txt').read().strip()
+page_order, updates = text.split('\n\n')
 
 for line in page_order.split('\n'):
     first_page, second_page = line.split('|')
@@ -35,17 +35,17 @@ for page in updates.split('\n'):
     else:
         good = []
         queue = []
-        D = {item: len(instructions.get(item, set()) & set(list)) for item in list}
+        dict = {item: len(instructions.get(item, set()) & set(list)) for item in list}
         for item in list:
-            if D[item] == 0:
+            if dict[item] == 0:
                 queue.append(item)
         while queue:
             x = queue.pop(0)
             good.append(x)
             for y in reversed_instructions.get(x, set()):
-                if y in D:
-                    D[y] -= 1
-                    if D[y] == 0:
+                if y in dict:
+                    dict[y] -= 1
+                    if dict[y] == 0:
                         queue.append(y)
         count2 += good[len(good) // 2]
 

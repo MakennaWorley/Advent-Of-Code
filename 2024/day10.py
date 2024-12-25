@@ -4,12 +4,12 @@ from collections import deque
 def single_path(sr,sc):
     queue = deque([(sr,sc)])
     ans = 0
-    SEEN = set()
+    visited = set()
     while queue:
         r,c = queue.popleft()
-        if (r,c) in SEEN:
+        if (r,c) in visited:
             continue
-        SEEN.add((r,c))
+        visited.add((r,c))
         if graph[r][c]==0:
             ans += 1
         for dr,dc in [(-1,0),(0,1),(1,0),(0,-1)]:

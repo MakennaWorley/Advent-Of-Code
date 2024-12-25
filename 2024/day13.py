@@ -11,6 +11,7 @@ def min_cost_claw(a_x, a_y, b_x, b_y, p_x, p_y):
         for y in range(p_y + 1):
             if dynamic_programming[x][y] == INF:
                 continue
+
             if x + a_x <= p_x and y + a_y <= p_y:
                 dynamic_programming[x + a_x][y + a_y] = min(
                     dynamic_programming[x + a_x][y + a_y],

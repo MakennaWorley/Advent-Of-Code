@@ -42,5 +42,6 @@ text = open('inputs/day9_input.txt').read().strip()
 
 count = solve(False)
 count2 = solve(True)
+
 print(count)
 print(count2)

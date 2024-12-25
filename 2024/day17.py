@@ -17,8 +17,8 @@ def getCombo(x, A=None, B=None, C=None):
     return -1
 
 
-def run(Ast):
-    A = Ast
+def run(count2):
+    A = count2
     B = 0
     C = 0
     ip = 0
@@ -32,19 +32,26 @@ def run(Ast):
 
         if opcode == 0:
             A = A // (2 ** getCombo(operand, A, B, C))
+
         elif opcode == 1:
             B = B ^ operand
+
         elif opcode == 2:
             B = getCombo(operand, A, B, C) % 8
+
         elif opcode == 3:
             if A != 0:
                 ip = operand - 2
+
         elif opcode == 4:
             B = B ^ C
+
         elif opcode == 5:
             out.append(getCombo(operand, A, B, C) % 8)
+
         elif opcode == 6:
             B = A // (2 ** getCombo(operand, A, B, C))
+
         elif opcode == 7:
             C = A // (2 ** getCombo(operand, A, B, C))
 
@@ -53,23 +60,23 @@ def run(Ast):
     return out
 
 
-def find_quine(Ast):
+def find_quine(count2):
     out = []
     matched = program[-1:]
-    Ast = 8 ** 15
+    count2 = 8 ** 15
     power = 14
 
     while out != program:
-        Ast += 8 ** power
-        out = run(Ast)
+        count2 += 8 ** power
+        out = run(count2)
         if out[-len(matched):] == matched:
             power = max(0, power - 1)
             matched = program[-(len(matched) + 1):]
 
-    return Ast
+    return count2
 
 
-ans = 0
+count = 0
 text = open('inputs/day17_input.txt').read().strip()
 matches = [int(x) for x in re.findall(r"\d+", text)]
 
@@ -80,5 +87,5 @@ program = [int(x) for x in program]
 
 print(",".join([str(x) for x in run(A)]))
 
-Ast = find_quine(A)
-print(Ast)
+count2 = find_quine(A)
+print(count2)

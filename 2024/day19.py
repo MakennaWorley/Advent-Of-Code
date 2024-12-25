@@ -2,12 +2,15 @@
 def ways(words, target):
     if target in dict:
         return dict[target]
+
     ans = 0
     if not target:
         ans = 1
+
     for word in words:
         if target.startswith(word):
             ans += ways(words, target[len(word):])
+
     dict[target] = ans
     return ans
 
@@ -24,6 +27,7 @@ for target in targets.split('\n'):
     target_ways = ways(words, target)
     if target_ways > 0:
         count += 1
+
     count2 += target_ways
 
 print(count)

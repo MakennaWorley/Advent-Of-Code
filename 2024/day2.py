@@ -1,7 +1,4 @@
 # day 2
-count = 0
-count2 = 0
-
 def is_report_count(head, tail, sign):
     if not tail:
         return True
@@ -40,6 +37,9 @@ def is_removed_report_count(line):
             return True
     return False
 
+
+count = 0
+count2 = 0
 
 with open('inputs/day2_input.txt', 'r') as file:
     for line in file:

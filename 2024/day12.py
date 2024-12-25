@@ -11,30 +11,30 @@ field = text.split('\n')
 row = len(field)
 column = len(field[0])
 
-SEEN = set()
+visited = set()
 for r in range(row):
     for c in range(column):
-        if (r,c) in SEEN:
+        if (r,c) in visited:
             continue
 
-        Q = deque([(r,c)])
+        queue = deque([(r,c)])
         area = 0
         perim = 0
         PERIM = dict()
 
-        while Q:
-            r2,c2 = Q.popleft()
-            if (r2,c2) in SEEN:
+        while queue:
+            r2,c2 = queue.popleft()
+            if (r2,c2) in visited:
                 continue
 
-            SEEN.add((r2,c2))
+            visited.add((r2,c2))
             area += 1
             for dr,dc in DIRECTIONS:
                 rr = r2+dr
                 cc = c2+dc
 
                 if 0<=rr<row and 0<=cc<column and field[rr][cc]==field[r2][c2]:
-                    Q.append((rr,cc))
+                    queue.append((rr,cc))
 
                 else:
                     perim += 1
@@ -46,25 +46,25 @@ for r in range(row):
 
         sides = 0
         for k,vs in PERIM.items():
-            SEEN_PERIM = set()
+            visited_PERIM = set()
             old_sides = sides
 
             for (pr,pc) in vs:
-                if (pr,pc) not in SEEN_PERIM:
+                if (pr,pc) not in visited_PERIM:
                     sides += 1
-                    Q = deque([(pr,pc)])
+                    queue2 = deque([(pr,pc)])
 
-                    while Q:
-                        r2,c2 = Q.popleft()
-                        if (r2,c2) in SEEN_PERIM:
+                    while queue2:
+                        r2,c2 = queue2.popleft()
+                        if (r2,c2) in visited_PERIM:
                             continue
 
-                        SEEN_PERIM.add((r2,c2))
+                        visited_PERIM.add((r2,c2))
                         for dr,dc in DIRECTIONS:
                             rr,cc = r2+dr,c2+dc
 
                             if (rr,cc) in vs:
-                                Q.append((rr,cc))
+                                queue2.append((rr,cc))
 
         count += area*perim
         count2 += area*sides

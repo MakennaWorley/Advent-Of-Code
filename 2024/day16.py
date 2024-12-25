@@ -15,14 +15,16 @@ for r in range(row):
     for c in range(column):
         if graph[r][c] == 'S':
             sr,sc = r,c
+            
         if graph[r][c] == 'E':
             er,ec = r,c
 
 queue = []
-SEEN = set()
+visted = set()
 heapq.heappush(queue, (0,sr,sc,1))
 DIST = {}
 best = None
+
 while queue:
     d,r,c,dir = heapq.heappop(queue)
     if (r,c,dir) not in DIST:
@@ -31,10 +33,10 @@ while queue:
     if r==er and c==ec and best is None:
         best = d
 
-    if (r,c,dir) in SEEN:
+    if (r,c,dir) in visted:
         continue
 
-    SEEN.add((r,c,dir))
+    visted.add((r,c,dir))
     dr,dc = DIRS[dir]
     rr,cc = r+dr,c+dc
     if 0<=cc<column and 0<=rr<row and graph[rr][cc] != '#':
@@ -42,23 +44,26 @@ while queue:
 
     heapq.heappush(queue, (d+1000, r,c,(dir+1)%4))
     heapq.heappush(queue, (d+1000, r,c,(dir+3)%4))
+
 print(best)
 
 queue = []
-SEEN = set()
+visted = set()
+
 for dir in range(4):
     heapq.heappush(queue, (0,er,ec,dir))
 
 DIST2 = {}
+
 while queue:
     d,r,c,dir = heapq.heappop(queue)
     if (r,c,dir) not in DIST2:
         DIST2[(r,c,dir)] = d
 
-    if (r,c,dir) in SEEN:
+    if (r,c,dir) in visted:
         continue
 
-    SEEN.add((r,c,dir))
+    visted.add((r,c,dir))
     dr,dc = DIRS[(dir+2)%4]
     rr,cc = r+dr,c+dc
     if 0<=cc<column and 0<=rr<row and graph[rr][cc] != '#':
